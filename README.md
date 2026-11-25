@@ -7,8 +7,7 @@ a long-term trend and a temperature anomaly map, using xarray, Dask and Zarr.
 
 [ERA5](https://www.ecmwf.int/en/forecasts/dataset/ecmwf-reanalysis-v5) is ECMWF's global
 reanalysis of the atmosphere. This project uses the
-[WeatherBench 2](https://weatherbench2.readthedocs.io/) copy, regridded to a 5.625° grid
-(64 × 32 points), 6-hourly, covering 1959–2021, read directly from cloud storage as Zarr.
+[WeatherBench 2](https://weatherbench2.readthedocs.io/) copy, regridded to a coarse 64 × 32 grid (5.625° in longitude, about 5.81° in latitude, including the poles), 6-hourly, covering 1959–2021, read directly from cloud storage as Zarr.
 
 ## Results
 
@@ -28,7 +27,7 @@ The full analysis, with explanations, is in
 
 ## Running it
 
-Tested with Python 3.12.
+Tested with Python 3.14.
 
 ```bash
 python -m venv .venv
@@ -42,7 +41,7 @@ in `data/`. Later runs read the local copy.
 
 ## Limitations
 
-- The 5.625° grid averages over regions several hundred kilometres wide, so results
+- The 64 × 32 grid averages over regions several hundred kilometres wide, so results
   describe regions, not specific locations.
 - Monthly means dilute short extremes such as heatwaves.
 - The trend is a descriptive least-squares fit, without a significance test.
